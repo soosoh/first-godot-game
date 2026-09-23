@@ -25,5 +25,6 @@ func _physics_process(delta: float) -> void:
 	if position.y > 500:
 		position.x = START_X
 		position.y = 0
+		GameController.fail()
 
 	move_and_slide()

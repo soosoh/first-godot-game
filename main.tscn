@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=4 uid="uid://8wm5cgbdd0nw"]
+[gd_scene load_steps=11 format=4 uid="uid://8wm5cgbdd0nw"]
 
+[ext_resource type="Script" uid="uid://5wbr7j842p5w" path="res://label.gd" id="1_272bh"]
 [ext_resource type="Script" uid="uid://bd02shxt3u40b" path="res://character_body_2d.gd" id="1_h2yge"]
 [ext_resource type="Texture2D" uid="uid://o24ct754r012" path="res://Rectangle 1.png" id="2_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://bey4q7j55g1jb" path="res://Player.png" id="2_h2yge"]
@@ -133,11 +134,31 @@ anchor_left = 0.316
 anchor_top = 0.409
 anchor_right = 0.316
 anchor_bottom = 0.409
-offset_left = -2310.032
-offset_top = -1365.032
-offset_right = 2656.968
-offset_bottom = 590.968
+offset_left = -2318.032
+offset_top = -1362.032
+offset_right = 2648.968
+offset_bottom = 593.968
 color = Color(0.13333334, 0.14117648, 0.28627452, 1)
+
+[node name="Panel" type="Panel" parent="."]
+clip_contents = true
+offset_left = -81.0
+offset_top = 239.0
+offset_right = 170.0
+offset_bottom = 319.0
+script = ExtResource("1_272bh")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 11.0
+offset_top = -34.0
+offset_right = 241.0
+offset_bottom = 35.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
 
 [node name="Player" type="CharacterBody2D" parent="."]
 script = ExtResource("1_h2yge")
@@ -164,6 +185,7 @@ tile_map_data = PackedByteArray("AADN/w0AAwAAAAAAAADN/w4AAwAAAAEAAADN/w8AAwAAAAI
 tile_set = SubResource("TileSet_lquwl")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
 
 [node name="Control" parent="CanvasLayer" instance=ExtResource("4_1bvp3")]
 script = ExtResource("5_lquwl")
@@ -171,23 +193,29 @@ script = ExtResource("5_lquwl")
 [node name="Coin" parent="." instance=ExtResource("6_7mycd")]
 position = Vector2(447, 266)
 scale = Vector2(0.07, 0.07)
+value = null
 
 [node name="Coin2" parent="." instance=ExtResource("6_7mycd")]
 position = Vector2(532, 265)
 scale = Vector2(0.07, 0.07)
+value = null
 
 [node name="Coin3" parent="." instance=ExtResource("6_7mycd")]
 position = Vector2(627, 264)
 scale = Vector2(0.07, 0.07)
+value = null
 
 [node name="Coin4" parent="." instance=ExtResource("6_7mycd")]
 position = Vector2(942, 164)
 scale = Vector2(0.07, 0.07)
+value = null
 
 [node name="Coin5" parent="." instance=ExtResource("6_7mycd")]
 position = Vector2(1261, 69)
 scale = Vector2(0.07, 0.07)
+value = null
 
 [node name="Coin6" parent="." instance=ExtResource("6_7mycd")]
 position = Vector2(1557.9999, -39)
 scale = Vector2(0.07, 0.07)
+value = null
