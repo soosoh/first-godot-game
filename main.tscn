@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://8wm5cgbdd0nw"]
+[gd_scene load_steps=17 format=4 uid="uid://8wm5cgbdd0nw"]
 
 [ext_resource type="Script" uid="uid://5wbr7j842p5w" path="res://label.gd" id="1_272bh"]
 [ext_resource type="Script" uid="uid://bd02shxt3u40b" path="res://character_body_2d.gd" id="1_h2yge"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bnjdk61obs7ua" path="res://control.tscn" id="4_1bvp3"]
 [ext_resource type="Script" uid="uid://cw3i30gaubw4c" path="res://coin_ui.gd" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://yc78h5ajlga3" path="res://coin.tscn" id="6_7mycd"]
+[ext_resource type="Texture2D" uid="uid://bvpxw0pdu2vww" path="res://animatedSlime.png" id="8_5vw27"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
 size = Vector2(128, 128)
@@ -126,6 +127,42 @@ texture = ExtResource("2_0xm2m")
 physics_layer_0/collision_layer = 1
 sources/3 = SubResource("TileSetAtlasSource_h2yge")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vw27"]
+atlas = ExtResource("8_5vw27")
+region = Rect2(0, 0, 351, 351)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kek77"]
+atlas = ExtResource("8_5vw27")
+region = Rect2(351, 0, 351, 351)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4c57u"]
+atlas = ExtResource("8_5vw27")
+region = Rect2(702, 0, 351, 351)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_efxa6"]
+atlas = ExtResource("8_5vw27")
+region = Rect2(1053, 0, 351, 351)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dg77c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5vw27")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kek77")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4c57u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_efxa6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Node" type="Node"]
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -138,6 +175,8 @@ offset_left = -9961.032
 offset_top = -8076.032
 offset_right = 18568.969
 offset_bottom = 5886.968
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.13333334, 0.14117648, 0.28627452, 1)
 
 [node name="Panel" type="Panel" parent="."]
@@ -175,6 +214,7 @@ shape = SubResource("RectangleShape2D_h2yge")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(363, 268)
+position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -191,41 +231,36 @@ script = ExtResource("5_lquwl")
 [node name="Coin" parent="." instance=ExtResource("6_7mycd")]
 position = Vector2(447, 266)
 scale = Vector2(0.07, 0.07)
-value = null
 
 [node name="Coin2" parent="." instance=ExtResource("6_7mycd")]
 position = Vector2(532, 265)
 scale = Vector2(0.07, 0.07)
-value = null
 
 [node name="Coin3" parent="." instance=ExtResource("6_7mycd")]
 position = Vector2(627, 264)
 scale = Vector2(0.07, 0.07)
-value = null
 
 [node name="Coin4" parent="." instance=ExtResource("6_7mycd")]
 position = Vector2(942, 164)
 scale = Vector2(0.07, 0.07)
-value = null
 
 [node name="Coin5" parent="." instance=ExtResource("6_7mycd")]
 position = Vector2(1261, 69)
 scale = Vector2(0.07, 0.07)
-value = null
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="."]
-offset_left = 1557.9999
-offset_top = -39.0
-offset_right = 1742.0
-offset_bottom = 1.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Coin6" parent="HBoxContainer2" instance=ExtResource("6_7mycd")]
+[node name="Coin6" parent="." instance=ExtResource("6_7mycd")]
+position = Vector2(1585, -21)
 scale = Vector2(0.07, 0.07)
-value = null
 
-[node name="Coin7" parent="HBoxContainer2" instance=ExtResource("6_7mycd")]
-position = Vector2(149.00012, 1)
+[node name="Coin7" parent="." instance=ExtResource("6_7mycd")]
+position = Vector2(1706, -19)
 scale = Vector2(0.07, 0.07)
-value = null
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="RigidBody2D"]
+position = Vector2(2132.9998, -1.0000019)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_dg77c")
+autoplay = "default"
+frame_progress = 0.3905301
